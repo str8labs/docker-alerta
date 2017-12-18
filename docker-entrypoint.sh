@@ -3,7 +3,11 @@
 set -ex
 
 ADMIN_USER=$(echo "${ADMIN_USERS}" | cut -d, -f1)
-MONGO_ADDR=$(echo "${MONGO_URI}" | sed -e 's/mongodb:\/\///')
+
+# only set MONGO_ADDR if it wasn't set alreay
+if [ -z "$MONGO_ADDR" ]; then
+  MONGO_ADDR=$(echo "${MONGO_URI}" | sed -e 's/mongodb:\/\///')
+fi
 
 # Generate web console config, if not supplied
 if [ ! -f "${ALERTA_WEB_CONF_FILE}" ]; then
