@@ -60,7 +60,7 @@ EXPIRE_TIME=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z" -d +1year)
 cat >/root/alerta.conf << EOF
 [DEFAULT]
 endpoint = http://localhost/api
-key = ${KEY}
+key = ${ADMIN_KEY}
 EOF
 
 # Install plugins
